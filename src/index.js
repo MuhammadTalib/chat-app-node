@@ -20,8 +20,9 @@ io.on('connection',(socket)=>{
     socket.emit('message','Welcome! to the Chat App');
     socket.broadcast.emit('message','A new user is joined')
 
-    socket.on('sendMessage',(message)=>{
-        io.emit('message',message)
+    socket.on('sendMessage',(message,callback) => {
+        io.emit('message',message);
+        callback()
     })
 
     socket.on('disconnect',()=>{

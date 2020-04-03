@@ -5,9 +5,11 @@ socket.on('message',(message)=>{
 })
 
 document.querySelector('#message-form').addEventListener('submit',(e)=>{
-    e.preventDefault()
+    e.preventDefault()           
     const message = e.target.elements.message.value;
-    socket.emit('sendMessage',message)
+    socket.emit('sendMessage',message,()=>{
+        console.log('Message was delivered')
+    })
 })
 
 document.querySelector('#send-location').addEventListener('click',()=>{
